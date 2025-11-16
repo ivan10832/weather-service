@@ -13,7 +13,7 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte("weather service"))
+		_, err := w.Write([]byte("weather sss"))
 		if err != nil {
 			log.Printf("error writing response: %v", err)
 		}
