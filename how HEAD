@@ -1,0 +1,56 @@
+[33mcommit b2e56d5a1a6a4b0531efabf1a8b36c7b1509f56e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Твое Имя <твой@email.com>
+Date:   Mon Nov 17 00:12:34 2025 +0300
+
+    Initial commit: add weather service
+
+[1mdiff --git a/README.md b/README.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/cmd/servise/main.go b/cmd/servise/main.go[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f861e3d[m
+[1m--- /dev/null[m
+[1m+++ b/cmd/servise/main.go[m
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32mpackage main[m
+[32m+[m
+[32m+[m[32mimport ([m
+[32m+[m	[32m"net/http"[m
+[32m+[m
+[32m+[m	[32m"log"[m
+[32m+[m
+[32m+[m	[32m"github.com/go-chi/chi/v5"[m
+[32m+[m	[32m"github.com/go-chi/chi/v5/middleware"[m
+[32m+[m[32m)[m
+[32m+[m
+[32m+[m[32mfunc main() {[m
+[32m+[m	[32mr := chi.NewRouter()[m
+[32m+[m	[32mr.Use(middleware.Logger)[m
+[32m+[m	[32mr.Get("/", func(w http.ResponseWriter, r *http.Request) {[m
+[32m+[m		[32mw.Write([]byte("welcome"))[m
+[32m+[m	[32m})[m
+[32m+[m	[32merr := http.ListenAndServe(":3000", r)[m
+[32m+[m	[32mif err != nil {[m
+[32m+[m		[32mlog.Printf("error starting server: %v", err)[m
+[32m+[m	[32m}[m
+[32m+[m[32m}[m
+[1mdiff --git a/go.mod b/go.mod[m
+[1mnew file mode 100644[m
+[1mindex 0000000..948946c[m
+[1m--- /dev/null[m
+[1m+++ b/go.mod[m
+[36m@@ -0,0 +1,5 @@[m
+[32m+[m[32mmodule github.com/ivan10832/weather-service[m
+[32m+[m
+[32m+[m[32mgo 1.24.5[m
+[32m+[m
+[32m+[m[32mrequire github.com/go-chi/chi/v5 v5.2.3 // indirect[m
+[1mdiff --git a/go.sum b/go.sum[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5bd7be3[m
+[1m--- /dev/null[m
+[1m+++ b/go.sum[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32mgithub.com/go-chi/chi/v5 v5.2.3 h1:WQIt9uxdsAbgIYgid+BpYc+liqQZGMHRaUwp0JUcvdE=[m
+[32m+[m[32mgithub.com/go-chi/chi/v5 v5.2.3/go.mod h1:L2yAIGWB3H+phAw1NxKwWM+7eUH/lU8pOMm5hHcoops=[m

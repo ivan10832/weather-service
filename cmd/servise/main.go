@@ -13,10 +13,14 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome"))
+		_, err := w.Write([]byte("weather service"))
+		if err != nil {
+			log.Printf("error writing response: %v", err)
+		}
 	})
 	err := http.ListenAndServe(":3000", r)
 	if err != nil {
 		log.Printf("error starting server: %v", err)
+
 	}
 }
